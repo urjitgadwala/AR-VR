@@ -1,31 +1,19 @@
+import streamlit as st
+
+# Define the HTML content
+html_code = """
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>AR Demo</title>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- The following libraries and polyfills are recommended to maximize browser support -->
-    <!-- NOTE: you must adjust the paths as appropriate for your project -->
-
-    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
-    <!--     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script> -->
-
-    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
-    <!--     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> -->
-
-    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
-    <!--     <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> -->
-
-    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script
       src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js"
       defer
     ></script>
-  </head>
-
-  <body>
+    
     <style>
       body {
         margin: 1em;
@@ -82,8 +70,10 @@
         line-height: 1.5em;
       }
     </style>
+  </head>
+
+  <body>
     <div id="card">
-      <!-- All you need to put beautiful, interactive 3D content on your site: -->
       <model-viewer
         src="Name.glb"
         ios-src="devfest.usdz"
@@ -97,24 +87,26 @@
       <section class="attribution">
         <span>
           <h1>AR Application</h1>
-          <span
-            >By
-            <a href="https://www.linkedin.com/in/urjit-gadwala-2a517b326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"
-              >Urjit Gadwala</a
-            ></span
-          >
+          <span>
+            By
+            <a href="https://www.linkedin.com/in/urjit-gadwala-2a517b326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+              Urjit Gadwala
+            </a>
+          </span>
         </span>
       </section>
     </div>
-    <!-- Loads <model-viewer> for modern browsers: -->
-    <script
-      type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-    ></script>
-    <!-- Loads <model-viewer> for old browsers like IE11: -->
-    <script
-      nomodule
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
-    ></script>
+    
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
   </body>
 </html>
+"""
+
+# Streamlit App
+st.set_page_config(page_title="AR Demo", layout="wide")
+
+st.title("AR Demo in Streamlit")
+
+# Render the HTML using Streamlit's component
+st.components.v1.html(html_code, height=600)
